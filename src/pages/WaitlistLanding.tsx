@@ -14,6 +14,25 @@ const FORM_URL = "https://forms.gle/RXEx3DykbjrzBGR18";
 
 export function WaitlistLanding() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const steps = [
+    {
+      step: "01", title: "Create your profile",
+      desc: "Tell us your university, budget, and preferences. We'll personalize everything for you.",
+      glassClass: glassBlue, accent: "text-[#7EB8D4]", glow: "bg-[#185FA5]/25",
+    },
+    {
+      step: "02", title: "Browse and connect",
+      desc: "View properties near your university and find flatmates who match your lifestyle.",
+      glassClass: glassTeal, accent: "text-teal-400", glow: "bg-teal-400/20",
+    },
+    {
+      step: "03", title: "Move in with confidence",
+      desc: "Access bills calculator, bus routes, and your AI assistant. Everything sorted.",
+      glassClass: glassViolet, accent: "text-violet-400", glow: "bg-violet-500/20",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-[#07090F] font-sans antialiased">
@@ -302,65 +321,71 @@ export function WaitlistLanding() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              {
-                step: "01",
-                glassClass: glassBlue,
-                glow1: "bg-[#185FA5]/25", glow2: "bg-[#7EB8D4]/15",
-                title: "Create your profile",
-                desc: "Tell us your university, budget, and preferences. We'll personalize everything for you.",
-              },
-              {
-                step: "02",
-                glassClass: glassTeal,
-                glow1: "bg-teal-400/20", glow2: "bg-teal-400/10",
-                title: "Browse and connect",
-                desc: "View properties near your university and find flatmates who match your lifestyle.",
-              },
-              {
-                step: "03",
-                glassClass: glassViolet,
-                glow1: "bg-violet-500/20", glow2: "bg-violet-400/10",
-                title: "Move in with confidence",
-                desc: "Access bills calculator, bus routes, and your AI assistant. Everything sorted.",
-              },
-            ].map(({ step, glassClass, glow1, glow2, title, desc }, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover="hover"
-                variants={{
-                  hover: {
-                    y: -8,
-                    scale: 1.02,
-                    transition: { type: "spring", stiffness: 280, damping: 22 },
-                  },
-                }}
-                className={`rounded-3xl p-6 sm:p-8 relative overflow-hidden cursor-default ${glassClass}`}
-              >
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-20 items-start">
+
+            {/* Left — step list */}
+            <div className="flex-1 flex flex-col">
+              {steps.map(({ step, title, glassClass, accent }, i) => (
                 <motion.div
-                  variants={{ hover: { scale: 1.6, opacity: 1 } }}
-                  transition={{ duration: 0.4 }}
-                  className={`absolute -top-10 -right-10 w-40 h-40 ${glow1} rounded-full blur-3xl pointer-events-none`}
-                />
-                <motion.div
-                  variants={{ hover: { scale: 1.5, opacity: 1 } }}
-                  transition={{ duration: 0.4 }}
-                  className={`absolute bottom-0 left-4 w-28 h-28 ${glow2} rounded-full blur-2xl pointer-events-none`}
-                />
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 mb-5 sm:mb-6">
-                    <span className="text-xs font-bold uppercase tracking-widest text-white/35">{step}</span>
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.1 }}
+                  onMouseEnter={() => setActiveStep(i)}
+                  onClick={() => setActiveStep(i)}
+                  className={`relative px-6 py-7 mb-2 rounded-2xl cursor-pointer transition-all duration-300 ${
+                    activeStep === i ? glassClass : "hover:bg-white/[0.02]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className={`font-serif text-3xl sm:text-4xl transition-all duration-300 leading-tight ${
+                      activeStep === i ? "text-white" : "text-white/25"
+                    }`}>
+                      {title}
+                    </h3>
+                    <span className={`text-sm font-semibold tracking-widest flex-shrink-0 transition-all duration-300 ${
+                      activeStep === i ? accent : "text-white/20"
+                    }`}>
+                      {step}
+                    </span>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white mb-3 tracking-tight">{title}</h3>
-                  <p className="text-white/40 leading-relaxed text-sm">{desc}</p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right — content panel */}
+            <div className="flex-1 w-full lg:sticky lg:top-28">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeStep}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className={`rounded-3xl p-8 sm:p-10 relative overflow-hidden min-h-[260px] flex flex-col justify-end ${steps[activeStep].glassClass}`}
+                >
+                  <div className={`absolute -top-12 -right-12 w-56 h-56 ${steps[activeStep].glow} rounded-full blur-3xl pointer-events-none`} />
+                  <div className={`absolute bottom-0 left-8 w-36 h-36 ${steps[activeStep].glow} opacity-50 rounded-full blur-2xl pointer-events-none`} />
+
+                  <div className="relative z-10">
+                    <span className={`text-[96px] font-serif leading-none ${steps[activeStep].accent} opacity-10 select-none absolute -top-6 right-6`}>
+                      {steps[activeStep].step}
+                    </span>
+                    <p className={`text-xs font-semibold uppercase tracking-[0.22em] ${steps[activeStep].accent} mb-4`}>
+                      Step {steps[activeStep].step}
+                    </p>
+                    <h4 className="text-2xl sm:text-3xl font-serif text-white mb-4 leading-snug">
+                      {steps[activeStep].title}
+                    </h4>
+                    <p className="text-white/50 leading-relaxed text-base font-poppins font-light">
+                      {steps[activeStep].desc}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
           </div>
         </div>
       </section>
