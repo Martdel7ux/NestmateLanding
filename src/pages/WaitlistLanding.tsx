@@ -103,7 +103,7 @@ export function WaitlistLanding() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(7,9,15,0.55) 0%, rgba(7,9,15,0.35) 30%, rgba(7,9,15,0.55) 65%, rgba(7,9,15,0.98) 100%)",
+              "linear-gradient(to bottom, rgba(7,9,15,0.7) 0%, rgba(7,9,15,0.55) 30%, rgba(7,9,15,0.65) 65%, rgba(7,9,15,0.98) 100%)",
           }}
         />
 
@@ -124,7 +124,7 @@ export function WaitlistLanding() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="text-base sm:text-lg md:text-xl text-white/70 mb-10 sm:mb-12 max-w-xl mx-auto leading-relaxed px-2 sm:px-0"
+            className="font-poppins font-light text-base sm:text-lg md:text-xl text-white/70 mb-10 sm:mb-12 max-w-xl mx-auto leading-relaxed px-2 sm:px-0"
           >
             Find your place, connect with flatmates, and access student
             essentials all in one beautiful app built for students in Cyprus.
