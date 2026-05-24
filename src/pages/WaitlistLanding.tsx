@@ -213,7 +213,7 @@ export function WaitlistLanding() {
                   <Home className="w-6 h-6 sm:w-7 sm:h-7 text-[#7EB8D4]" />
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-3 tracking-tight">Find your place</h3>
+                <h3 className="text-xl sm:text-2xl font-serif font-normal text-white mb-3">Find your place</h3>
                 <p className="text-white/45 leading-relaxed mb-6 text-sm">
                   Browse verified properties near your university. Filter by budget, size, and distance. All in one place.
                 </p>
@@ -263,7 +263,7 @@ export function WaitlistLanding() {
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-teal-400/15 border border-teal-400/25 backdrop-blur-sm flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-105 transition-transform flex-shrink-0">
                   <Users className="w-5 h-5 sm:w-6 sm:h-6 text-teal-400" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-extrabold text-white mb-2 tracking-tight">Connect with flatmates</h3>
+                <h3 className="text-lg sm:text-xl font-serif font-normal text-white mb-2">Connect with flatmates</h3>
                 <p className="text-white/45 text-sm leading-relaxed">
                   Match with students by university, budget, and lifestyle. Find perfect flatmates before you even arrive.
                 </p>
@@ -280,7 +280,7 @@ export function WaitlistLanding() {
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-violet-500/15 border border-violet-500/25 backdrop-blur-sm flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-105 transition-transform flex-shrink-0">
                   <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-violet-400" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-extrabold text-white mb-2 tracking-tight">Student essentials</h3>
+                <h3 className="text-lg sm:text-xl font-serif font-normal text-white mb-2">Student essentials</h3>
                 <p className="text-white/45 text-sm leading-relaxed mb-4 sm:mb-5">
                   Bills calculator, bus routes, study hub, and AI assistant. Built for Cyprus student life.
                 </p>
