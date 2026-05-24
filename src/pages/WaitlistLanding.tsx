@@ -20,8 +20,8 @@ export function WaitlistLanding() {
 
       {/* ── Nav ─────────────────────────────────────────────────────────── */}
       <nav className="fixed top-0 w-full z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between relative">
-          <img src="/logo.png" alt="Nestmate" className="h-10 sm:h-14 w-auto" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-16 flex items-center justify-between relative">
+          <img src="/logo.png" alt="Nestmate" className="h-14 sm:h-14 w-auto" />
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
@@ -46,7 +46,7 @@ export function WaitlistLanding() {
             className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
 
