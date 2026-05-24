@@ -150,7 +150,7 @@ export function WaitlistLanding() {
       </div>{/* end scroll track */}
 
       {/* ── Curtain — rises up and over the sticky hero ─────────────────── */}
-      <div className="relative z-[2] bg-[#07090F] -mt-10 rounded-t-[24px] md:rounded-t-[40px] shadow-[0_-20px_40px_rgba(0,0,0,0.06)]">
+      <div className="relative z-[2] bg-[#07090F] -mt-10">
 
       {/* ── Features bento ──────────────────────────────────────────────── */}
       <section id="features" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
