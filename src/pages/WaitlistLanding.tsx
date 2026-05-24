@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Menu, Users, X, Zap } from "lucide-react";
+import { Home, Key, Menu, Users, X, Zap } from "lucide-react";
 
 // ── Shared glass class strings ────────────────────────────────────────────────
-const glass        = "bg-white/[0.05] backdrop-blur-xl border border-white/[0.09] shadow-[0_8px_40px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)]";
 const glassBlue    = "bg-[#185FA5]/10 backdrop-blur-xl border border-[#185FA5]/20 shadow-[0_8px_40px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]";
 const glassTeal    = "bg-teal-400/8 backdrop-blur-xl border border-teal-400/15 shadow-[0_8px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]";
 const glassViolet  = "bg-violet-500/8 backdrop-blur-xl border border-violet-500/15 shadow-[0_8px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]";
@@ -249,10 +248,10 @@ export function WaitlistLanding() {
 
                   <div className="space-y-2.5">
                     {[
-                      { name: "Studio near UCLan Cyprus",  loc: "5 min walk",  price: "€450", img: "bg-gradient-to-br from-blue-500/50 to-indigo-600/40",  active: true  },
-                      { name: "2-bed shared apartment",    loc: "10 min walk", price: "€320", img: "bg-gradient-to-br from-teal-500/40 to-cyan-600/30",     active: false },
-                      { name: "En-suite private room",     loc: "On campus",   price: "€520", img: "bg-gradient-to-br from-violet-500/40 to-purple-600/30", active: false },
-                    ].map(({ name, loc, price, img, active }, i) => (
+                      { name: "Studio near UCLan Cyprus",  loc: "5 min walk",  price: "€450", img: "bg-gradient-to-br from-blue-500/50 to-indigo-600/40",  active: true,  Icon: Home  },
+                      { name: "2-bed shared apartment",    loc: "10 min walk", price: "€320", img: "bg-gradient-to-br from-teal-500/40 to-cyan-600/30",     active: false, Icon: Users },
+                      { name: "En-suite private room",     loc: "5 min walk",  price: "€520", img: "bg-gradient-to-br from-violet-500/40 to-purple-600/30", active: false, Icon: Key   },
+                    ].map(({ name, loc, price, img, active, Icon }, i) => (
                       <div
                         key={i}
                         className={`flex items-center gap-3 rounded-2xl p-3 border transition-colors ${
@@ -261,7 +260,9 @@ export function WaitlistLanding() {
                             : "bg-white/[0.03] border-white/[0.06]"
                         }`}
                       >
-                        <div className={`w-11 h-11 rounded-xl flex-shrink-0 ${img}`} />
+                        <div className={`w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center ${img}`}>
+                          <Icon className="w-5 h-5 text-white/80" />
+                        </div>
                         <div className="flex-1 min-w-0">
                           <p className={`text-xs font-semibold truncate ${active ? "text-white" : "text-white/45"}`}>
                             {name}
