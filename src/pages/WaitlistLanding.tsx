@@ -398,24 +398,34 @@ export function WaitlistLanding() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className={`relative overflow-hidden rounded-3xl px-5 py-10 sm:px-8 sm:py-16 text-center ${glass}`}
+            className="relative overflow-hidden rounded-3xl px-6 py-14 sm:px-12 sm:py-20 text-center bg-white/[0.04] backdrop-blur-2xl border border-white/[0.1] shadow-[0_24px_80px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(255,255,255,0.03)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#185FA5]/8 to-transparent pointer-events-none" />
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#185FA5]/12 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-48 h-48 bg-indigo-900/20 rounded-full blur-2xl pointer-events-none" />
+            {/* Glow blobs */}
+            <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#185FA5]/15 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-indigo-600/10 rounded-full blur-[60px] pointer-events-none" />
+            <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-[#7EB8D4]/10 rounded-full blur-[50px] pointer-events-none" />
+
+            {/* Top highlight line */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+            {/* Inner diagonal sheen */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-[#185FA5]/[0.06] pointer-events-none" />
 
             <div className="relative z-10">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4 tracking-tight">
-                Ready to simplify your student life?
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7EB8D4] mb-5">
+                Early access
+              </p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-white mb-5 leading-[1.15]">
+                Ready to simplify your
+                <br className="hidden sm:block" /> student life?
               </h2>
-              <p className="text-white/35 text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed">
+              <p className="font-poppins font-light text-white/45 text-base sm:text-lg mb-10 leading-relaxed max-w-md mx-auto">
                 Join the waitlist. Be the first to experience Nestmate.
               </p>
               <a
                 href={FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-white text-[#07090F] font-semibold text-sm hover:bg-white/90 active:scale-[0.98] transition-all shadow-[0_4px_24px_rgba(255,255,255,0.15)]"
+                className="inline-block px-8 py-3.5 rounded-full bg-white text-[#07090F] font-semibold text-sm hover:bg-white/90 active:scale-[0.98] transition-all shadow-[0_4px_32px_rgba(255,255,255,0.2),0_0_0_1px_rgba(255,255,255,0.1)]"
               >
                 Join the waitlist
               </a>
