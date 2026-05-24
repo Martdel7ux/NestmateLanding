@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Home, Menu, Users, X, Zap } from "lucide-react";
+import { Home, Menu, Users, X, Zap } from "lucide-react";
 
 // ── Shared glass class strings ────────────────────────────────────────────────
 const glass        = "bg-white/[0.05] backdrop-blur-xl border border-white/[0.09] shadow-[0_8px_40px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)]";
@@ -205,45 +205,78 @@ export function WaitlistLanding() {
               transition={{ duration: 0.55 }}
               className={`lg:flex-[1.4] rounded-3xl p-6 sm:p-8 flex flex-col relative overflow-hidden ${glassBlue}`}
             >
-              <div className="absolute bottom-0 right-0 w-72 h-72 bg-[#185FA5]/15 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute top-1/3 left-1/3 w-40 h-40 bg-[#185FA5]/8 rounded-full blur-2xl pointer-events-none" />
+              {/* Atmospheric layers */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#185FA5]/15 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#185FA5]/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -top-10 -left-10 w-56 h-56 bg-[#7EB8D4]/8 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7EB8D4]/30 to-transparent pointer-events-none" />
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#185FA5]/20 border border-[#185FA5]/30 backdrop-blur-sm flex items-center justify-center mb-5 sm:mb-6 flex-shrink-0">
-                  <Home className="w-6 h-6 sm:w-7 sm:h-7 text-[#7EB8D4]" />
+                {/* Label + title */}
+                <div className="mb-7">
+                  <div className="flex items-center gap-2.5 mb-5">
+                    <div className="w-9 h-9 rounded-xl bg-[#185FA5]/25 border border-[#185FA5]/30 backdrop-blur-sm flex items-center justify-center">
+                      <Home className="w-4 h-4 text-[#7EB8D4]" />
+                    </div>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7EB8D4]">Housing</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-serif font-normal text-white mb-3 leading-tight">
+                    Find your place
+                  </h3>
+                  <p className="text-white/40 text-sm leading-relaxed font-poppins font-light">
+                    Verified properties near your university. Filter by budget, size, and distance.
+                  </p>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-serif font-normal text-white mb-3">Find your place</h3>
-                <p className="text-white/45 leading-relaxed mb-6 text-sm">
-                  Browse verified properties near your university. Filter by budget, size, and distance. All in one place.
-                </p>
-
-                <ul className="space-y-2.5 mb-8">
-                  {["Verified property listings", "Near your university", "Filter by budget and size"].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-sm text-white/55">
-                      <div className="w-4 h-4 rounded-full bg-[#185FA5]/25 border border-[#185FA5]/40 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
-                        <Check className="w-2.5 h-2.5 text-[#7EB8D4]" />
-                      </div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Mockup */}
-                <div className={`mt-auto rounded-2xl p-4 ${glass}`}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#185FA5]/25 border border-[#185FA5]/20 flex-shrink-0" />
-                    <div className="flex-1 min-w-0">
-                      <div className="h-2.5 w-28 bg-white/18 rounded-full mb-1.5" />
-                      <div className="h-2 w-20 bg-white/10 rounded-full" />
-                    </div>
-                    <div className="text-xs text-[#7EB8D4] bg-[#185FA5]/18 border border-[#185FA5]/25 px-2.5 py-1 rounded-full font-semibold whitespace-nowrap backdrop-blur-sm">
-                      €450/mo
-                    </div>
+                {/* Listings mockup */}
+                <div className="mt-auto">
+                  {/* Filter pills */}
+                  <div className="flex gap-2 mb-4">
+                    {[
+                      { label: "All", active: true },
+                      { label: "Studio", active: false },
+                      { label: "Shared", active: false },
+                    ].map(({ label, active }) => (
+                      <span key={label} className={`text-[10px] font-semibold px-3 py-1 rounded-full border ${
+                        active
+                          ? "bg-[#185FA5]/30 border-[#185FA5]/40 text-[#7EB8D4]"
+                          : "bg-white/[0.04] border-white/10 text-white/30"
+                      }`}>
+                        {label}
+                      </span>
+                    ))}
                   </div>
-                  <div className="space-y-1.5">
-                    <div className="h-1.5 w-5/6 bg-white/8 rounded-full" />
-                    <div className="h-1.5 w-3/5 bg-white/5 rounded-full" />
+
+                  <div className="space-y-2.5">
+                    {[
+                      { name: "Studio near UCLan Cyprus",  loc: "5 min walk",  price: "€450", img: "bg-gradient-to-br from-blue-500/50 to-indigo-600/40",  active: true  },
+                      { name: "2-bed shared apartment",    loc: "10 min walk", price: "€320", img: "bg-gradient-to-br from-teal-500/40 to-cyan-600/30",     active: false },
+                      { name: "En-suite private room",     loc: "On campus",   price: "€520", img: "bg-gradient-to-br from-violet-500/40 to-purple-600/30", active: false },
+                    ].map(({ name, loc, price, img, active }, i) => (
+                      <div
+                        key={i}
+                        className={`flex items-center gap-3 rounded-2xl p-3 border transition-colors ${
+                          active
+                            ? "bg-[#185FA5]/20 border-[#185FA5]/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)]"
+                            : "bg-white/[0.03] border-white/[0.06]"
+                        }`}
+                      >
+                        <div className={`w-11 h-11 rounded-xl flex-shrink-0 ${img}`} />
+                        <div className="flex-1 min-w-0">
+                          <p className={`text-xs font-semibold truncate ${active ? "text-white" : "text-white/45"}`}>
+                            {name}
+                          </p>
+                          <p className="text-[10px] text-white/30 mt-0.5">{loc}</p>
+                        </div>
+                        <div className={`text-[10px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap border ${
+                          active
+                            ? "text-[#7EB8D4] bg-[#185FA5]/25 border-[#185FA5]/35"
+                            : "text-white/35 bg-white/[0.05] border-white/[0.08]"
+                        }`}>
+                          {price}/mo
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
