@@ -45,7 +45,7 @@ export function WaitlistLanding() {
           <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             <a href="#features" className="text-sm text-white/60 hover:text-white transition-colors">Features</a>
             <a href="#how-it-works" className="text-sm text-white/60 hover:text-white transition-colors">How it works</a>
-            <a href="#contact" className="text-sm text-white/60 hover:text-white transition-colors">Contact</a>
+            <a href="#contact" className="text-sm text-white/60 hover:text-white transition-colors">Join the Waitlist</a>
           </div>
 
           {/* Desktop CTA */}
@@ -82,7 +82,7 @@ export function WaitlistLanding() {
                 {[
                   { label: "Features",     href: "#features" },
                   { label: "How it works", href: "#how-it-works" },
-                  { label: "Contact",      href: "#contact" },
+                  { label: "Join the Waitlist", href: "#contact" },
                 ].map(({ label, href }) => (
                   <a
                     key={href}
