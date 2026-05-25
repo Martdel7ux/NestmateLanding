@@ -125,6 +125,17 @@ export function WaitlistLanding() {
           }}
         />
 
+        {/* Subtle film grain */}
+        <div
+          className="absolute inset-0 z-[2] pointer-events-none"
+          style={{
+            opacity: 0.09,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "300px 300px",
+          }}
+        />
+
         <div className="relative z-10 max-w-4xl mx-auto text-center w-full py-16 sm:py-24">
 
           <motion.h1
