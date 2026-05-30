@@ -38,14 +38,15 @@ export function WaitlistLanding() {
 
       {/* ── Nav ─────────────────────────────────────────────────────────── */}
       <nav className="fixed top-0 w-full z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-16 flex items-center justify-between relative">
-          <img src="/logo.png" alt="Nestmate" className="h-14 sm:h-14 w-auto" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between relative">
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            <a href="#features" className="text-sm text-white/60 hover:text-white transition-colors">Features</a>
-            <a href="#how-it-works" className="text-sm text-white/60 hover:text-white transition-colors">How it works</a>
-            <a href="#contact" className="text-sm text-white/60 hover:text-white transition-colors">Join the Waitlist</a>
+          <img src="/logo.png" alt="Nestmate" className="h-14 w-auto" />
+
+          {/* Desktop links — glass pill */}
+          <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 bg-white/[0.07] backdrop-blur-2xl border border-white/[0.12] shadow-[0_4px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.10)] rounded-2xl px-2 py-1.5">
+            <a href="#features" className="text-sm text-white/60 hover:text-white transition-colors px-4 py-1.5 rounded-xl hover:bg-white/[0.07]">Features</a>
+            <a href="#how-it-works" className="text-sm text-white/60 hover:text-white transition-colors px-4 py-1.5 rounded-xl hover:bg-white/[0.07]">How it works</a>
+            <a href="#contact" className="text-sm text-white/60 hover:text-white transition-colors px-4 py-1.5 rounded-xl hover:bg-white/[0.07]">Join the Waitlist</a>
           </div>
 
           {/* Desktop CTA */}
@@ -72,17 +73,17 @@ export function WaitlistLanding() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease: "easeInOut" }}
-              className="md:hidden overflow-hidden bg-[#07090F]/95 backdrop-blur-xl border-b border-white/[0.06]"
+              className="max-w-5xl mx-auto mt-2 rounded-2xl overflow-hidden bg-[#0d1017]/90 backdrop-blur-2xl border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
             >
               <div className="flex flex-col gap-1 px-4 py-4">
                 {[
-                  { label: "Features",     href: "#features" },
-                  { label: "How it works", href: "#how-it-works" },
-                  { label: "Join the Waitlist", href: "#contact" },
+                  { label: "Features",          href: "#features" },
+                  { label: "How it works",       href: "#how-it-works" },
+                  { label: "Join the Waitlist",  href: "#contact" },
                 ].map(({ label, href }) => (
                   <a
                     key={href}
